@@ -24,14 +24,16 @@ const char* HEX_TABLE[16][2] = {
 int main(int argc, char *argv[])
 {
     if(argc != 2) {
-        printf("Please provide a single argument");
+        printf("Usage: bin-to-hex 00011111010101");
         return 1;
     }
 
     char* bin = argv[1];
     int output_len = ceil(strlen(argv[1]) / 4);
+
     char output[output_len + 1];
     output[output_len + 1] = '\0';
+
     int it = output_len;
 
     for(int i = strlen(bin) - 1; i >= 0; i -= 4) {
@@ -45,10 +47,12 @@ int main(int argc, char *argv[])
 
         int found = 0;
 
-        for(int a = 0; a < 16; a++) {
+        for(int a = 0; a < sizeof(HEX_TABLE) / sizeof(HEX_TABLE[0]); a++) {
             if(strcmp(last_four, HEX_TABLE[a][0]) == 0) {
                 found = 1;
                 output[it] = *HEX_TABLE[a][1];
+
+                break;
             }
         }
 
