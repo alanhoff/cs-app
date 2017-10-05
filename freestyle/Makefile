@@ -1,5 +1,10 @@
+all: bin-to-hex hex-to-bin
+
 bin-to-hex:
-	gcc -ansi bin-to-hex.c -o bin-to-hex
+	gcc -ansi shared.c bin-to-hex.c -o bin-to-hex
+
+hex-to-bin:
+	gcc -ansi shared.c hex-to-bin.c -o hex-to-bin
 
 clean:
-	rm bin-to-hex
+	rm -r bin-to-hex hex-to-bin
