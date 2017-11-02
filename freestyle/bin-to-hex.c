@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[])
 {
-    if(argc != 2) {
+    if (argc != 2) {
         printf("Usage: bin-to-hex 00011111010101");
         return 1;
     }
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
     int it = output_len;
 
-    for(int i = strlen(bin) - 1; i >= 0; i -= 4) {
+    for (int i = strlen(bin) - 1; i >= 0; i -= 4) {
         char last_four[5] = {
             i - 3 < 0 ? '0' : bin[i - 3],
             i - 2 < 0 ? '0' : bin[i - 2],
@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
 
         int found = 0;
 
-        for(int a = 0; a < sizeof(HEX_TABLE) / sizeof(HEX_TABLE[0]); a++) {
-            if(strcmp(last_four, HEX_TABLE[a][0]) == 0) {
+        for (int a = 0; a < sizeof(HEX_TABLE) / sizeof(HEX_TABLE[0]); a++) {
+            if (strcmp(last_four, HEX_TABLE[a][0]) == 0) {
                 found = 1;
                 output[it] = *HEX_TABLE[a][1];
 
